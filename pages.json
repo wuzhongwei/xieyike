@@ -1,0 +1,83 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/auth/login",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		},
+		{
+			"path": "pages/auth/register",
+			"style": {
+				"navigationBarTitleText": "注册"
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "uni-app11"
+				// "app-plus": {
+				// 	 "titleNView": {  
+				// 	       "backgroundcolor": "#f7f7f7",  
+				// 	       "titletext": "首页",  
+				// 	       "titlecolor": "#000000",  
+				// 	       "type":"transparent"  
+				// 	    }  
+					
+				// }
+				// "navigationStyle":"custom"
+			}
+		}
+	    ,{
+            "path" : "pages/details/details",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					
+					"titleNView":  {
+						"type": "transparent"
+					}
+					
+				}
+            }
+            
+        }
+        // ,{
+        //     "path" : "pages/auth/auth",
+        //     "style" :                                                                                    
+        //     {
+        //         "navigationBarTitleText": "",
+        //         "enablePullDownRefresh": false
+        //     }
+            
+        // }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app1",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FFFFFF"
+	}
+	// "tabBar": {
+	// 	"color":"#bfbfbf",
+	// 	"selectedColor":"#515151",
+	// 	"borderStyle":"black",
+	// 	"backgroundColor":"#FFFFFF",
+	// 	"list":[
+	// 		{
+	// 			"pagePath":"pages/index/index",
+	// 			"text":"",
+	// 			"iconPath":"static/home.png",
+	// 			"selectedIconPath":"static/home_active.png"
+	// 		},
+	// 		{
+	// 			"pagePath":"pages/login/login",
+	// 			"text":"",
+	// 			"iconPath":"static/bubble.png",
+	// 			"selectedIconPath":"static/bubble_active.png"
+	// 		}
+	// 	]
+	// }
+}
