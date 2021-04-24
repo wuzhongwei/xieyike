@@ -56,9 +56,9 @@
 		methods: {
 			getPhoneNumber (e) {
 				var that = this;
-				wx.login({ //微信官方登录方法
+				uni.login({ //微信官方登录方法
+					 provider: 'weixin',
 			         success: function (res) {//登录成功，拿到第三方平台code
-						console.log(res.code, e.detail)
 						const {encryptedData, iv} = e.detail
 						that.$http({
 							url: `/baseUser/v1.0/appletLogin`,
@@ -68,21 +68,10 @@
 								encryptedData: encryptedData,
 								iv: iv
 							}
-						}).then((data) => {
-							console.log('data', data)
+						}, {msg: true}).then(({data}) => {
+							that.loginSuccessCallBack(data);
 						})
-						// wx.getUserInfo({
-						//   success: function(res) {
-						//     var userInfo = res.userInfo
-						//     var nickName = userInfo.nickName
-						//     var avatarUrl = userInfo.avatarUrl
-						//     var gender = userInfo.gender //性别 0：未知、1：男、2：女
-						//     var province = userInfo.province
-						//     var city = userInfo.city
-						//     var country = userInfo.country
-						// 					console.log(res)
-						//   }
-						// })
+						
 			         }
 			     })
 			},

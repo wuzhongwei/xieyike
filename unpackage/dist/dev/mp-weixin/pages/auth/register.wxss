@@ -30,9 +30,6 @@ page {
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-image.data-v-6e828681 {
-  background-color: #ddd;
-}
 /* 最多显示一行 */
 .xnk-ellipsis.data-v-6e828681 {
   overflow: hidden;

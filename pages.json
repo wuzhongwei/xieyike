@@ -1,9 +1,20 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/set/userInfo",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationStyle":"custom"
+			}
+		},
+		{
 			"path": "pages/auth/login",
 			"style": {
-				"navigationBarTitleText": "登录"
+				"navigationBarTitleText": "登录",
+				"navigationStyle":"custom",
+				"app-plus": {
+					"animationType": "slide-in-bottom"
+				}
 			}
 		},
 		{
@@ -44,40 +55,61 @@
             }
             
         }
-        // ,{
-        //     "path" : "pages/auth/auth",
-        //     "style" :                                                                                    
-        //     {
-        //         "navigationBarTitleText": "",
-        //         "enablePullDownRefresh": false
-        //     }
+        ,{
+            "path" : "pages/set/move",
+            "style" : {
+            	"navigationBarTitleText": "更多"
+            }
             
-        // }
+        },
+		{
+            "path" : "pages/set/about",
+            "style" : {
+            	"navigationBarTitleText": "关于我们"
+            }
+            
+        }
+        ,{
+            "path" : "pages/set/userInfoUpdate",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "个人资料",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+		,{
+			"path": "pages/set/cutImage/cut",
+			"style": {
+				"navigationStyle":"custom",
+				"navigationBarTextStyle":"white"
+			}
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app1",
 		"navigationBarBackgroundColor": "#FFFFFF",
 		"backgroundColor": "#FFFFFF"
+	},
+	"tabBar": {
+		"color":"#bfbfbf",
+		"selectedColor":"#515151",
+		"borderStyle":"black",
+		"backgroundColor":"#FFFFFF",
+		"list":[
+			{
+				"pagePath":"pages/index/index",
+				"text":"",
+				"iconPath":"static/home.png",
+				"selectedIconPath":"static/home_active.png"
+			},
+			{
+				"pagePath":"pages/set/userInfo",
+				"text":"",
+				"iconPath":"static/home.png",
+				"selectedIconPath":"static/home_active.png"
+			}
+		]
 	}
-	// "tabBar": {
-	// 	"color":"#bfbfbf",
-	// 	"selectedColor":"#515151",
-	// 	"borderStyle":"black",
-	// 	"backgroundColor":"#FFFFFF",
-	// 	"list":[
-	// 		{
-	// 			"pagePath":"pages/index/index",
-	// 			"text":"",
-	// 			"iconPath":"static/home.png",
-	// 			"selectedIconPath":"static/home_active.png"
-	// 		},
-	// 		{
-	// 			"pagePath":"pages/login/login",
-	// 			"text":"",
-	// 			"iconPath":"static/bubble.png",
-	// 			"selectedIconPath":"static/bubble_active.png"
-	// 		}
-	// 	]
-	// }
 }

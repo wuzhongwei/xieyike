@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import App from './App'
 import store from './store'
-
 import {
 	msg,
 	isLogin,
@@ -10,6 +9,8 @@ import {
 	prePage,
 	date
 } from '@/common/js/util'
+import mixin from './common/mixin/mixin'
+Vue.mixin(mixin) 
 Vue.prototype.$util = {
 	msg,
 	isLogin,

@@ -32,7 +32,6 @@ const store = new Vuex.Store({
 		},
 		//更新token
 		setToken(state, data){
-			console.log('data', data)
 			const {token} = data;
 			state.token = token;
 			uni.setStorageSync('uniIdToken', token);
@@ -41,9 +40,6 @@ const store = new Vuex.Store({
 		logout(state){
 			state.token = '';
 			uni.removeStorageSync('uniIdToken');
-			this.dispatch('getCartCount');//更新购物车数量
-			uni.$emit('refreshCart');//刷新购物车
-			this.dispatch('getOrderCount'); //更新订单数量
 			setTimeout(()=>{
 				state.userInfo = {};
 			}, 1100)

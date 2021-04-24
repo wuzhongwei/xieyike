@@ -42,7 +42,7 @@
 </template>
 
 <script>
-	import {rulephone} from '@/utils/utils.js'
+	// import {rulephone} from '@/utils/utils.js'
 	const sendStr = '发送验证码'
 	const num = 60
 	export default {
@@ -74,13 +74,13 @@
 					});
 					return
 				}
-				if (!rulephone.test(this.from.phone)) {
-					uni.showToast({
-					    title: '请输入正确的手机号',
-						icon: 'none'
-					});
-					return
-				}
+				// if (!rulephone.test(this.from.phone)) {
+				// 	uni.showToast({
+				// 	    title: '请输入正确的手机号',
+				// 		icon: 'none'
+				// 	});
+				// 	return
+				// }
 				this.$http({
 					url: `/common/v1.0/getVerifyCode/${this.from.phone}`,
 					data: {
