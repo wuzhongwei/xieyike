@@ -12,11 +12,11 @@
 		</view>
 		<view class="my-body">
 			<view class="my-body-wrap">
-				<view class="my-body-item">
+				<view class="my-body-item" @click="navTo('/pages/set/readExperience', {login: true})">
 					<text>阅读经验</text>
 					<text class="ml10">{{userInfo.readingExperience}}</text>
 				</view>
-				<view class="my-body-item">
+				<view class="my-body-item" @click="navTo('/pages/set/mytest', {login: true})">
 					<text>我的测评</text>
 					<text class="ml10">{{userInfo.evaluationNumber}}</text>
 				</view>

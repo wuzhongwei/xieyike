@@ -1,23 +1,19 @@
 <template>
 	<view class="app">
-		<view class="cell row b-b" @click="navTo('/pages/set/userInfoUpdate')">
-			<text class="tit">个人资料</text>
-			<text class="uni-icon uni-icon-arrowright"></text>
-		</view>
-		<view class="cell row b-b" @click="navTo('/pages/set/accountSecure')">
-			<text class="tit">账号与安全</text>
-			<text class="uni-icon uni-icon-arrowright"></text>
+		<view class="cell row b-b">
+			<text class="tit">绑定手机</text>
+			<text>1322222222</text>
 		</view>
 		<view class="cell row b-b">
-			<text class="tit">检查版本</text>
+			<text class="tit">微信绑定</text>
+			<view>
+				未绑定<text class="uni-icon uni-icon-arrowright"></text>
+			</view>
+		</view>
+		<view class="cell row b-b" @click="navTo('/pages/auth/payPassword')">
+			<text class="tit">修改密码</text>
 			<text class="uni-icon uni-icon-arrowright"></text>
 		</view>
-		<view class="cell row b-b" @click="navTo('/pages/set/about')">
-			<text class="tit">关于我们</text>
-			<text class="uni-icon uni-icon-arrowright"></text>
-		</view>
-		<view class="mix-btn-content" @click="showConfirm('mixModal')">退出登录</view>
-		<mix-modal ref="mixModal" title="提示" text="您确定要退出登录吗" @onConfirm="outlogin"></mix-modal>
 	</view>
 </template>
 

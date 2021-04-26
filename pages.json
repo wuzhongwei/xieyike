@@ -84,6 +84,34 @@
 				"navigationStyle":"custom",
 				"navigationBarTextStyle":"white"
 			}
+		},
+		{
+			"path": "pages/set/accountSecure",
+			"style": {
+				"navigationBarTitleText": "账号与安全",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/auth/payPassword",
+			"style": {
+				"navigationBarTitleText": "修改密码",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/set/readExperience",
+			"style": {
+				"navigationBarTitleText": "阅读经验",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/set/mytest",
+			"style": {
+				"navigationBarTitleText": "我的测评",
+				"enablePullDownRefresh": false
+			}
 		}
     ],
 	"globalStyle": {
