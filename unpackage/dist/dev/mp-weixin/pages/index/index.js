@@ -178,7 +178,6 @@ var _default =
 
     then(function (data) {
       _this.list = data.list;
-      console.log('1dd', data);
     });
   },
   methods: {} };exports.default = _default;

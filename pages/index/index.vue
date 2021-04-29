@@ -46,7 +46,6 @@
 				}
 			}).then((data) => {
 				this.list = data.list
-				console.log('1dd', data)
 			})
 		},
 		methods: {

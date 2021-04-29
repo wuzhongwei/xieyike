@@ -143,3 +143,17 @@ $base-color:#ff536f;
 			z-index: 1;
 		}
 	}
+	.popup-wrap {
+		background-color: #fff;
+		padding: r(20) r(20);
+	
+		.popup-wrap_item {
+			background-color: #fff;
+			box-shadow: 0px r(1) r(3) 0px;
+			border-radius: r(100);
+			font-size: r(14);
+			text-align: center;
+			line-height: r(52);
+			margin-bottom: r(20);
+		}
+	}

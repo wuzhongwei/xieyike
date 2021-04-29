@@ -1,11 +1,10 @@
 <template>
 	<view class="page-index">
 		<view class="list">
-			<mix-index-item
-				v-for="(item, index) in list"
-				:key="index"
-				@clickBtnHandle="clickBtnHandle"
-			></mix-index-item>
+			<view v-for="(item, index) in list" :key="index" class="list-wrap">
+				<view class="title"><text class="bod">测评者</text> <text>阅读了你的测评</text></view>
+				<mix-index-item @clickBtnHandle="clickBtnHandle"></mix-index-item>
+			</view>
 		</view>
 		<uni-popup ref="popup" type="bottom">
 			<view class="popup-wrap">
@@ -16,7 +15,7 @@
 		</uni-popup>
 		<page-pagination :total="page.total" :pageSize="page.pageSize" :currentPage="page.currentPage" @change="change">
 		</page-pagination>
-		
+
 	</view>
 </template>
 
@@ -24,7 +23,7 @@
 	export default {
 		data() {
 			return {
-				list: [2,3,4,5],
+				list: [2, 3, 4, 5],
 				page: {
 					total: 88,
 					pageSize: 10,
@@ -34,10 +33,10 @@
 		},
 		onLoad() {},
 		methods: {
-			closeHandle () {
+			closeHandle() {
 				this.$refs.popup.close()
 			},
-			clickBtnHandle (item) {
+			clickBtnHandle(item) {
 				this.$refs.popup.open()
 			},
 			change(currentPage) {
@@ -54,6 +53,19 @@
 			padding: 0 r(15);
 			margin-top: r(40);
 		}
-
+		.list-wrap {
+			background-color: #E3E2E2;
+			border-radius: r(20);
+			.title {
+				line-height: r(57);
+				color: #4A4A4A;
+				font-size: r(16);
+				padding: 0 r(29);
+			}
+			.bod {
+				font-weight: bold;
+				margin-right: r(10);
+			}
+		}
 	}
 </style>

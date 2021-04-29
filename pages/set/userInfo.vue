@@ -20,23 +20,23 @@
 					<text>我的测评</text>
 					<text class="ml10">{{userInfo.evaluationNumber}}</text>
 				</view>
-				<view class="my-body-item">
+				<view class="my-body-item" @click="navTo('/pages/set/subscribe', {login: true})">
 					<text>被订阅数</text>
 					<text class="ml10">{{userInfo.subscribeNumber}}</text>
 				</view>
 			</view>
-			<view class="new-dynamic">最新动态</view>
+			<view class="new-dynamic" @click="navTo('/pages/set/newDynamic', {login: true})">最新动态</view>
 		</view>
 		<view class="my-foot">
-			<view class="my-cell">
+			<view class="my-cell" @click="navTo('/pages/set/follow', {login: true})">
 				<text class="text">关注的人</text>
 				<text class="icon-arrow uni-icon uni-icon-arrowright"></text>
 			</view>
-			<view class="my-cell">
+			<view class="my-cell" @click="navTo('/pages/set/collection', {login: true})">
 				<text class="text">收藏夹</text>
 				<text class="icon-arrow uni-icon uni-icon-arrowright"></text>
 			</view>
-			<view class="my-cell">
+			<view class="my-cell" @click="navTo('/pages/set/drafts', {login: true})">
 				<text class="text">草稿箱</text>
 				<text class="icon-arrow uni-icon uni-icon-arrowright"></text>
 			</view>

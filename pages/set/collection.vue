@@ -5,6 +5,7 @@
 				v-for="(item, index) in list"
 				:key="index"
 				@clickBtnHandle="clickBtnHandle"
+				isBtnIcon
 			></mix-index-item>
 		</view>
 		<uni-popup ref="popup" type="bottom">

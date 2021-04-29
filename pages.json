@@ -112,6 +112,41 @@
 				"navigationBarTitleText": "我的测评",
 				"enablePullDownRefresh": false
 			}
+		},
+		{
+			"path": "pages/set/subscribe",
+			"style": {
+				"navigationBarTitleText": "被订阅数",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/set/newDynamic",
+			"style": {
+				"navigationBarTitleText": "最新动态",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/set/collection",
+			"style": {
+				"navigationBarTitleText": "收藏夹",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/set/drafts",
+			"style": {
+				"navigationBarTitleText": "草稿箱",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/set/follow",
+			"style": {
+				"navigationBarTitleText": "我的关注",
+				"enablePullDownRefresh": false
+			}
 		}
     ],
 	"globalStyle": {

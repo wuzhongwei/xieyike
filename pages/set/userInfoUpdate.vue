@@ -3,24 +3,22 @@
 		<view class="cell">
 			<text class="tit fill">头像</text>
 			<view class="avatar-wrap" @click="chooseImage">
-				<image class="avatar" :src="tempAvatar || userInfo.avatar || '/static/icon/default-avatar.png'" mode="aspectFill"></image>
+				<image class="avatar" :src="tempAvatar || userInfo.avatar || '/static/icon/default-avatar.png'"
+					mode="aspectFill"></image>
 				<!-- 进度遮盖 -->
-				<view 
-					class="progress center"
-					:class="{
+				<view class="progress center" :class="{
 						'no-transtion': uploadProgress === 0,
 						show: uploadProgress != 100
-					}"
-					:style="{
+					}" :style="{
 						width: uploadProgress + '%',
 						height: uploadProgress + '%',
-					}"
-				></view>
+					}"></view>
 			</view>
 		</view>
 		<view class="cell b-b">
 			<text class="tit fill">用户名</text>
-			<input class="input" v-model="userInfo.nickname" type="text" maxlength="8" placeholder="请输入用户名" placeholder-class="placeholder">
+			<input class="input" v-model="userInfo.nickname" type="text" maxlength="8" placeholder="请输入用户名"
+				placeholder-class="placeholder">
 		</view>
 		<view class="cell b-b">
 			<text class="tit fill">性别</text>
@@ -37,15 +35,17 @@
 		</view>
 		<view class="cell b-b">
 			<text class="tit fill">所在地</text>
-			 <picker mode='region' @change="onchange">
-			   <view>{{cityStr}}</view>
-			 </picker>
+			<picker mode='region' @change="onchange">
+				<view>{{cityStr}}</view>
+			</picker>
 		</view>
 		<view class="cell b-b">
-			<text class="tit fill">注册时间</text>
-			<text>2023-2-3</text>
+			<text class="tit fill">生日</text>
+			<picker mode="date" :value="date" :start="startDate" :end="endDate" @change="bindDateChange">
+				<view class="uni-input">{{date}}</view>
+			</picker>
 		</view>
-		
+
 		<mix-button ref="confirmBtn" text="保存资料" marginTop="80rpx" @onConfirm="confirm"></mix-button>
 	</view>
 </template>
@@ -53,65 +53,115 @@
 <script>
 	export default {
 		data() {
+			const currentDate = this.getDate({
+				format: true
+			})
 			return {
 				uploadProgress: 100, //头像上传进度
-				tempAvatar: '', 
+				tempAvatar: '',
 				userInfo: {},
+				date: currentDate,
 				cityStr: '请选择地区'
 			}
 		},
 		computed: {
-			curUserInfo(){
+			curUserInfo() {
 				return this.$store.state.userInfo
+			},
+			startDate() {
+				return this.getDate('start');
+			},
+			endDate() {
+				return this.getDate('end');
 			}
 		},
 		watch: {
-			curUserInfo(curUserInfo){
-				const {avatar, nickname, gender, anonymous} = curUserInfo;
-				this.userInfo = {avatar, nickname, gender, anonymous: !!anonymous};
+			curUserInfo(curUserInfo) {
+				const {
+					avatar,
+					nickname,
+					gender,
+					anonymous
+				} = curUserInfo;
+				this.userInfo = {
+					avatar,
+					nickname,
+					gender,
+					anonymous: !!anonymous
+				};
 			}
 		},
 		onLoad() {
-			const {avatar, nickname, gender, anonymous} = this.curUserInfo;
-			this.userInfo = {avatar, nickname, gender, anonymous: !!anonymous};
+			const {
+				avatar,
+				nickname,
+				gender,
+				anonymous
+			} = this.curUserInfo;
+			this.userInfo = {
+				avatar,
+				nickname,
+				gender,
+				anonymous: !!anonymous
+			};
 		},
 		methods: {
+			getDate(type) {
+				const date = new Date();
+				let year = date.getFullYear();
+				let month = date.getMonth() + 1;
+				let day = date.getDate();
+
+				if (type === 'start') {
+					year = year - 60;
+				} else if (type === 'end') {
+					year = year + 2;
+				}
+				month = month > 9 ? month : '0' + month;;
+				day = day > 9 ? day : '0' + day;
+				return `${year}-${month}-${day}`;
+			},
+			bindDateChange() {},
 			onchange(e) {
-			  const value = e.detail.value
-			  this.cityStr = value.join(' ')
-			  console.log('value', this.cityStr)
+				const value = e.detail.value
+				this.cityStr = value.join(' ')
+				console.log('value', this.cityStr)
 			},
 			//提交修改
-			async confirm(){
-				const {uploadProgress, userInfo, curUserInfo} = this;
+			async confirm() {
+				const {
+					uploadProgress,
+					userInfo,
+					curUserInfo
+				} = this;
 				let isUpdate = false;
-				for(let key in userInfo){
-					if(userInfo[key] !== curUserInfo[key]){
+				for (let key in userInfo) {
+					if (userInfo[key] !== curUserInfo[key]) {
 						isUpdate = true;
 						break;
 					}
 				}
-				if(isUpdate === false){
+				if (isUpdate === false) {
 					this.$util.msg('信息未修改');
 					this.$refs.confirmBtn.stop();
 					return;
 				}
-				if(!userInfo.avatar){
+				if (!userInfo.avatar) {
 					this.$util.msg('请上传头像');
 					this.$refs.confirmBtn.stop();
 					return;
 				}
-				if(uploadProgress !== 100){
+				if (uploadProgress !== 100) {
 					this.$util.msg('请等待头像上传完毕');
 					this.$refs.confirmBtn.stop();
 					return;
 				}
-				if(!userInfo.nickname){
+				if (!userInfo.nickname) {
 					this.$util.msg('请输入您的昵称');
 					this.$refs.confirmBtn.stop();
 					return;
 				}
-				if(!userInfo.gender){
+				if (!userInfo.gender) {
 					this.$util.msg('请选择您的性别');
 					this.$refs.confirmBtn.stop();
 					return;
@@ -119,62 +169,63 @@
 				const res = await this.$request('user', 'update', userInfo);
 				this.$refs.confirmBtn.stop();
 				this.$util.msg(res.msg);
-				if(res.status === 1){
+				if (res.status === 1) {
 					this.$store.dispatch('getUserInfo'); //刷新用户信息
-					setTimeout(()=>{
+					setTimeout(() => {
 						uni.navigateBack();
 					}, 1000)
 				}
 			},
 			//选择头像
-			chooseImage(){
+			chooseImage() {
 				uni.chooseImage({
 					count: 1,
-					success: res=> {
+					success: res => {
 						console.log('res.tempFilePaths[0]', res.tempFilePaths[0])
 						uni.navigateTo({
-							url: `./cutImage/cut?src=${res.tempFilePaths[0]}` 
+							url: `./cutImage/cut?src=${res.tempFilePaths[0]}`
 						});
 					}
 				});
-			}, 
+			},
 			//裁剪回调
-			async setAvatar(filePath){
+			async setAvatar(filePath) {
 				this.tempAvatar = filePath;
 				this.uploadProgress = 0;
 				const result = await uniCloud.uploadFile({
 					filePath: filePath,
-					cloudPath: + new Date() + ('000000' + Math.floor(Math.random() * 999999)).slice(-6) + '.jpg',
-					onUploadProgress: e=> {
+					cloudPath: +new Date() + ('000000' + Math.floor(Math.random() * 999999)).slice(-6) +
+						'.jpg',
+					onUploadProgress: e => {
 						this.uploadProgress = Math.round(
 							(e.loaded * 100) / e.total
 						);
 					}
 				});
-				if(!result.fileID){
+				if (!result.fileID) {
 					this.$util.msg('头像上传失败');
 					return;
 				}
-				if(typeof uniCloud.getTempFileURL === 'undefined'){
+				if (typeof uniCloud.getTempFileURL === 'undefined') {
 					this.userInfo.avatar = result.fileID;
-				}else{
+				} else {
 					const tempFiles = await uniCloud.getTempFileURL({
 						fileList: [result.fileID]
 					})
 					const tempFile = tempFiles.fileList[0];
-					if(tempFile.download_url || tempFile.fileID){
+					if (tempFile.download_url || tempFile.fileID) {
 						this.userInfo.avatar = tempFile.download_url || tempFile.fileID;
-					}else{
+					} else {
 						this.$util.msg('头像上传失败');
 					}
 				}
 			},
 			//修改性别
-			changeGender(gender){
+			changeGender(gender) {
 				this.$set(this.userInfo, 'gender', gender)
 			},
 			//公开信息
-			onSwitch(e){
+			onSwitch(e) {
 				this.userInfo.anonymous = !e.detail.value;
 			}
 		}
@@ -182,86 +233,97 @@
 </script>
 
 <style scoped lang="scss">
-	.app{
+	.app {
 		padding-top: 16rpx;
 	}
-	.cell{
+
+	.cell {
 		display: flex;
 		align-items: center;
 		min-height: 110rpx;
 		padding: 0 40rpx;
-		
-		&:first-child{
+
+		&:first-child {
 			margin-bottom: 10rpx;
 		}
-		&:after{
+
+		&:after {
 			left: 40rpx;
 			right: 40rpx;
 			border-color: #d8d8d8;
 		}
-		.tit{
+
+		.tit {
 			font-size: 30rpx;
 			color: #333;
 		}
-		.avatar-wrap{
+
+		.avatar-wrap {
 			width: 120rpx;
 			height: 120rpx;
 			position: relative;
 			border-radius: 100rpx;
 			overflow: hidden;
-			
-			.avatar{
+
+			.avatar {
 				width: 100%;
 				height: 100%;
 				border-radius: 100rpx;
 			}
-			.progress{
+
+			.progress {
 				position: absolute;
 				left: 50%;
 				top: 50%;
 				transform: translate(-50%, -50%);
 				width: 100rpx;
 				height: 100rpx;
-				box-shadow: rgba(0,0,0,.6) 0px 0px 0px 2005px;
+				box-shadow: rgba(0, 0, 0, .6) 0px 0px 0px 2005px;
 				border-radius: 100rpx;
 				transition: .5s;
 				opacity: 0;
-				
-				&.no-transtion{
+
+				&.no-transtion {
 					transition: 0s;
 				}
-				&.show{
+
+				&.show {
 					opacity: 1;
 				}
 			}
 		}
-		.input{
+
+		.input {
 			flex: 1;
 			text-align: right;
 			font-size: 28rpx;
 			color: #333;
 		}
-		switch{
+
+		switch {
 			margin: 0;
 			transform: scale(0.8) translateX(10rpx);
 			transform-origin: center right;
 		}
-		.tip{
+
+		.tip {
 			margin-left: 20rpx;
 			font-size: 28rpx;
 			color: #999;
 		}
-		.checkbox{
+
+		.checkbox {
 			padding: 12rpx 0 12rpx 40rpx;
 			font-size: 28rpx;
 			color: #333;
-			
-			.mix-icon{
+
+			.mix-icon {
 				margin-right: 12rpx;
 				font-size: 36rpx;
 				color: #ccc;
 			}
-			.icon-xuanzhong{
+
+			.icon-xuanzhong {
 				color: $base-color;
 			}
 		}

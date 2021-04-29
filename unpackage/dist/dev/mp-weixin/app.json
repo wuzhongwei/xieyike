@@ -12,7 +12,12 @@
     "pages/set/accountSecure",
     "pages/auth/payPassword",
     "pages/set/readExperience",
-    "pages/set/mytest"
+    "pages/set/mytest",
+    "pages/set/subscribe",
+    "pages/set/newDynamic",
+    "pages/set/collection",
+    "pages/set/drafts",
+    "pages/set/follow"
   ],
   "subPackages": [],
   "window": {
