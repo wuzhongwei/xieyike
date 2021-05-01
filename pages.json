@@ -1,6 +1,22 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "uni-app11"
+				// "app-plus": {
+				// 	 "titleNView": {  
+				// 	       "backgroundcolor": "#f7f7f7",  
+				// 	       "titletext": "首页",  
+				// 	       "titlecolor": "#000000",  
+				// 	       "type":"transparent"  
+				// 	    }  
+					
+				// }
+				// "navigationStyle":"custom"
+			}
+		},
+		{
 			"path": "pages/set/userInfo",
 			"style": {
 				"navigationBarTitleText": "我的",
@@ -23,23 +39,7 @@
 				"navigationBarTitleText": "注册"
 			}
 		},
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app11"
-				// "app-plus": {
-				// 	 "titleNView": {  
-				// 	       "backgroundcolor": "#f7f7f7",  
-				// 	       "titletext": "首页",  
-				// 	       "titlecolor": "#000000",  
-				// 	       "type":"transparent"  
-				// 	    }  
-					
-				// }
-				// "navigationStyle":"custom"
-			}
-		}
-	    ,{
+	    {
             "path" : "pages/details/details",
             "style" :                                                                                    
             {
@@ -147,7 +147,65 @@
 				"navigationBarTitleText": "我的关注",
 				"enablePullDownRefresh": false
 			}
+		},
+		{
+			"path": "pages/index/testDetail",
+			"style": {
+				"navigationBarTitleText": "测评简介",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/index/details",
+			"style": {
+				"navigationBarTitleText": "测评详情页",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/index/testUser",
+			"style": {
+				"navigationBarTitleText": "测评者信息",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/index/jiaoxing",
+			"style": {
+				"navigationBarTitleText": "脚型",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/index/wazi",
+			"style": {
+				"navigationBarTitleText": "袜子",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/index/dafa",
+			"style": {
+				"navigationBarTitleText": "篮球打法",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/index/dafaDetails",
+			"style": {
+				"navigationBarTitleText": "篮球打法详情",
+				"enablePullDownRefresh": false
+			}
 		}
+        ,{
+            "path" : "pages/user/user",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "个人主页",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

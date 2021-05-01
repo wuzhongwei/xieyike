@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/set/userInfo",
     "pages/auth/login",
     "pages/auth/register",
-    "pages/index/index",
     "pages/details/details",
     "pages/set/move",
     "pages/set/about",
@@ -17,7 +17,15 @@
     "pages/set/newDynamic",
     "pages/set/collection",
     "pages/set/drafts",
-    "pages/set/follow"
+    "pages/set/follow",
+    "pages/index/testDetail",
+    "pages/index/details",
+    "pages/index/testUser",
+    "pages/index/jiaoxing",
+    "pages/index/wazi",
+    "pages/index/dafa",
+    "pages/index/dafaDetails",
+    "pages/user/user"
   ],
   "subPackages": [],
   "window": {

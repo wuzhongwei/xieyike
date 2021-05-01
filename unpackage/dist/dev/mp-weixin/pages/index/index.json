@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "uni-app11",
-  "usingComponents": {}
+  "usingComponents": {
+    "mix-index-item": "/components/mix-index-item/mix-index-item"
+  }
 }

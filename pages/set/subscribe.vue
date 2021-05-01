@@ -62,10 +62,6 @@
 				font-size: r(16);
 				padding: 0 r(29);
 			}
-			.bod {
-				font-weight: bold;
-				margin-right: r(10);
-			}
 		}
 	}
 </style>

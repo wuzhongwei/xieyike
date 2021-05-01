@@ -1,5 +1,5 @@
 <template>
-	<view class="list-item">
+	<view class="list-item" @click="$emit('click')">
 		<view class="list-l">
 			<view class="list-head">
 				<image class="list-head__l"

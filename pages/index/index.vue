@@ -7,24 +7,9 @@
 			</view>
 		</view>
 		<view class="list">
-			<navigator url="/pages/details/details" v-for="item in list" :key="item.id">
-				<view class="list-item">
-					<view class="list-l">
-						<view class="list-head">
-							<image class="list-head__l" :src="item.evaluationUserImg" mode=""></image>
-							<view class="list-head__r">
-								<view class="list-user">{{item.userName}}</view>
-								<view class="list-time">测评10次·共12小时</view>
-							</view>
-						</view>
-						<view class="list-body xnk-multi-ellipsis--l2">{{item.title}}</view>
-						<view class="foot">{{item.introduction}}</view>
-					</view>
-					<view class="list-r">
-						<image class="img" :src="item.evaluationImgUrl" mode=""></image>
-					</view>
-				</view>
-			</navigator>
+			<mix-index-item @click="navTo('/pages/index/testDetail')"></mix-index-item>
+			<mix-index-item></mix-index-item>
+			<mix-index-item></mix-index-item>
 		</view>
 	</view>
 </template>
@@ -38,18 +23,11 @@
 			}
 		},
 		onLoad() {
-			this.$http({
-				url: '/evaluation/list',
-				data: {
-					evaluationStatus: 0,
-					pageNo: this.pageNo
-				}
-			}).then((data) => {
-				this.list = data.list
-			})
 		},
 		methods: {
-		
+			change () {
+				console.log(2)
+			}
 		}
 	}
 </script>
