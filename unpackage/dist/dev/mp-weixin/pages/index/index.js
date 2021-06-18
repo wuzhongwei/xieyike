@@ -96,7 +96,7 @@ var components
 try {
   components = {
     mixIndexItem: function() {
-      return __webpack_require__.e(/*! import() | components/mix-index-item/mix-index-item */ "components/mix-index-item/mix-index-item").then(__webpack_require__.bind(null, /*! @/components/mix-index-item/mix-index-item.vue */ 223))
+      return __webpack_require__.e(/*! import() | components/mix-index-item/mix-index-item */ "components/mix-index-item/mix-index-item").then(__webpack_require__.bind(null, /*! @/components/mix-index-item/mix-index-item.vue */ 498))
     }
   }
 } catch (e) {

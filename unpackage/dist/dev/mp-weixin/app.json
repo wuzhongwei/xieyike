@@ -21,11 +21,39 @@
     "pages/index/testDetail",
     "pages/index/details",
     "pages/index/testUser",
+    "pages/index/indexedList",
+    "pages/index/testUser1",
     "pages/index/jiaoxing",
     "pages/index/wazi",
+    "pages/index/waziInput",
+    "pages/index/testchangdi",
     "pages/index/dafa",
+    "pages/index/addDafa",
     "pages/index/dafaDetails",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/user/bijilie",
+    "pages/user/bijiDetail",
+    "pages/user/ceateTest",
+    "pages/write/write",
+    "pages/notice/notice",
+    "pages/notice/pinlun",
+    "pages/notice/dianzan",
+    "pages/notice/tuijian",
+    "pages/notice/fensi",
+    "pages/notice/xitong",
+    "pages/public/article",
+    "pages/public/article2",
+    "pages/index/jiaoganmohe",
+    "pages/index/waiguansheji",
+    "pages/index/zuogong",
+    "pages/index/baoguoxing",
+    "pages/index/zhichenxing",
+    "pages/index/linghuaxing",
+    "pages/index/touqixing",
+    "pages/index/zhuadili",
+    "pages/index/naimoxing",
+    "pages/index/huanzhenxing",
+    "pages/index/zongjie"
   ],
   "subPackages": [],
   "window": {
@@ -47,12 +75,19 @@
         "selectedIconPath": "static/home_active.png"
       },
       {
+        "pagePath": "pages/notice/notice",
+        "text": "",
+        "iconPath": "static/bubble.png",
+        "selectedIconPath": "static/bubble_active.png"
+      },
+      {
         "pagePath": "pages/set/userInfo",
         "text": "",
-        "iconPath": "static/home.png",
-        "selectedIconPath": "static/home_active.png"
+        "iconPath": "static/user.png",
+        "selectedIconPath": "static/user_active.png"
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap64.json"
 }

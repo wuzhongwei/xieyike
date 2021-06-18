@@ -1,5 +1,5 @@
 <template>
-	<view style="height: 2000px;">
+	<view>
 		详情
 	</view>
 </template>

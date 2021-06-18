@@ -128,16 +128,27 @@
 					});
 					return
 				}
+				console.log(44)
 				this.$http({
 					url: `/baseUser/v1.0/register`,
 					method: 'post',
 					data: {
 						...this.from
 					}
-				}).then((data) => {
+				}, {msg: true}).then((data) => {
+					console.log(data)
 					if (data.code === '0000') {
 						uni.showToast({
 						    title: '注册成功'
+						});
+						setTimeout(() => {
+							uni.redirectTo({
+								url: '/pages/set/userInfoUpdate'
+							})
+						}, 1000)
+					} else {
+						uni.showToast({
+						    title: data.message
 						});
 					}
 				})

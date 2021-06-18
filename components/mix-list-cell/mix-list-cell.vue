@@ -1,16 +1,18 @@
 <template>
 	<view class="content">
 		<view class="mix-list-cell" :class="border" @click="onClick" hover-class="cell-hover"  :hover-stay-time="50">
-			<text
-				v-if="icon"
-				class="cell-icon mix-icon"
-				:style="[{
-					color: iconColor,
-				}]"
-				:class="icon"
-			></text>
+			<view class="icon-wrap">
+				<text
+					v-if="icon"
+					class="uni-icon"
+					:style="[{
+						color: iconColor,
+					}]"
+					:class="icon"
+				></text>
+			</view>
 			<text class="cell-tit clamp">{{ title }}</text>
-			<text v-if="tips" class="cell-tip" :style="{color: tipsColor}">{{ tips }}</text>
+			<text v-if="tips" class="cell-tip">{{ tips }}</text>
 			<text class="cell-more mix-icon"
 				:class="typeList[navigateType]"
 			></text>
@@ -65,7 +67,7 @@
 			},
 			iconColor: {
 				type: String,
-				default: '#333'
+				default: '#fff'
 			}
 		},
 		methods: {
@@ -80,9 +82,9 @@
 	.mix-list-cell{
 		display:flex;
 		align-items: center;
-		height: 96rpx;
 		padding: 0 24rpx;
 		position:relative;
+		height: r(85);
 		
 		&.cell-hover{
 			background:#fafafa;
@@ -90,7 +92,7 @@
 		&.b-b{
 			&:after{
 				left: 30rpx;
-				border-color: #f0f0f0;
+				border-color: #E3E2E2;
 			}
 		}
 		.cell-icon{
@@ -106,12 +108,31 @@
 		}
 		.cell-tit{
 			flex: 1;
-			font-size: 30rpx;
+			font-size: r(18);
 			color: #333;
 			margin-right:10rpx;
 		}
 		.cell-tip{
-			font-size: 26rpx;
+			font-size: r(14);
+			background-color: #F4080C;
+			border-radius: r(100);
+			color: #fff;
+			height: r(20);
+			line-height: r(20);
+			padding: 0 r(6);
+		}
+		.icon-wrap {
+			background-color: #F4080C;
+			width: r(50);
+			height: r(50);
+			border-radius: r(20);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-right: r(18);
+			.uni-icon {
+				color: #fff;
+			}
 		}
 	}
 </style>

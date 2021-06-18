@@ -262,16 +262,27 @@ var num = 60;var _default =
 
         return;
       }
+      console.log(44);
       this.$http({
         url: "/baseUser/v1.0/register",
         method: 'post',
         data: _objectSpread({},
-        this.from) }).
+        this.from) },
 
-      then(function (data) {
+      { msg: true }).then(function (data) {
+        console.log(data);
         if (data.code === '0000') {
           uni.showToast({
             title: '注册成功' });
+
+          setTimeout(function () {
+            uni.redirectTo({
+              url: '/pages/set/userInfoUpdate' });
+
+          }, 1000);
+        } else {
+          uni.showToast({
+            title: data.message });
 
         }
       });

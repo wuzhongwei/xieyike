@@ -3,12 +3,16 @@
 		<view :style="{ height: statusBarHeight }"></view>
 		<view class="my-edit wrap">
 			<text class="my-text">我的</text>
-			<view class="border"><text class="my-icon"></text></view>
+			<view @click="navTo('/pages/user/bijilie', {login: true})" class="border" v-if="hasLogin"><text class="my-icon"></text></view>
 		</view>
 		<view class="my-hello wrap"><view class="t1">{{hasLogin ? '你好，' : '请登录'}}</view><view class="t2">{{userInfo.baseUser.name}}</view></view>
-		<view class="my-avatar" :style="{top: parseInt(statusBarHeight) + 90 + 'px'}">
-			<view class="avatar-btn"></view>
-			<image class="avatar" :src="tempAvatar || userInfo.avatar || '/static/icon/default-avatar.png'" mode="aspectFill"></image>
+		<view 
+			class="my-avatar" 
+			:style="{top: parseInt(statusBarHeight) + 90 + 'px'}"
+			
+		>
+			<view class="avatar-btn" @click="navTo('/pages/user/user', {login: true})"></view>
+			<image @click="navTo('/pages/set/userInfoUpdate', {login: true})" class="avatar" :src="userInfo.baseUser.icon || '/static/icon/default-avatar.png'" mode="scaleToFill"></image>
 		</view>
 		<view class="my-body">
 			<view class="my-body-wrap">
@@ -45,6 +49,13 @@
 				<text class="icon-arrow uni-icon uni-icon-arrowright"></text>
 			</view>
 		</view>
+		<uni-popup ref="popup" type="bottom">
+			<view class="popup-wrap">
+				<view class="popup-title">测评鞋款名</view>
+				<uni-easyinput type="text" v-model="testVal" placeholder="点击填写" />
+				<view class="mix-btn-content mt20">提交</view>
+			</view>
+		</uni-popup>
 	</view>
 </template>
 
@@ -55,8 +66,8 @@
 	export default {
 		data() {
 			return {
-				statusBarHeight: statusBarHeight,
-				tempAvatar: ''
+				testVal: '',
+				statusBarHeight: statusBarHeight
 			}
 		},
 		computed: {
@@ -65,6 +76,7 @@
 		},
 		onShow() {
 			this.getInfo()
+			// this.$refs.popup.open()
 		},
 		methods: {
 			getInfo () {
@@ -84,6 +96,9 @@
 </script>
 
 <style scoped lang="scss">
+	.mt20 {
+		margin-top: r(20);
+	}
 	.app{
 		overflow: hidden;
 		position: relative;
@@ -192,5 +207,9 @@
 			}
 		}
 	}
-	
+	.popup-title {
+		text-align: center;
+		font-size: r(20);
+		margin-bottom: r(27);
+	}
 </style>

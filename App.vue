@@ -24,7 +24,6 @@
 				// #endif
 				// #ifdef MP-WEIXIN
 				custom = wx.getMenuButtonBoundingClientRect();
-				console.log('e.statusBarHeight', e.statusBarHeight, custom.bottom, custom.top)
 				navigationBarHeight = custom.bottom + custom.top;
 				// #endif	
 				systemInfo.custom = custom;

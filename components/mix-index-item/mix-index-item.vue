@@ -77,7 +77,7 @@
 		border-radius: r(20);
 		display: flex;
 		justify-content: space-between;
-		margin-bottom: r(17);
+		// margin-bottom: r(17);
 		background-color: #fff;
 		.list-l {
 			padding: r(18) r(7) 0 r(18);

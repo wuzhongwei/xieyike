@@ -3,32 +3,24 @@
 		<view class="cell">
 			<text class="tit fill">头像</text>
 			<view class="avatar-wrap" @click="chooseImage">
-				<image class="avatar" :src="tempAvatar || userInfo.avatar || '/static/icon/default-avatar.png'"
+				<image class="avatar" :src="tempAvatar || icon || '/static/icon/default-avatar.png'"
 					mode="aspectFill"></image>
-				<!-- 进度遮盖 -->
-				<view class="progress center" :class="{
-						'no-transtion': uploadProgress === 0,
-						show: uploadProgress != 100
-					}" :style="{
-						width: uploadProgress + '%',
-						height: uploadProgress + '%',
-					}"></view>
 			</view>
 		</view>
 		<view class="cell b-b">
 			<text class="tit fill">用户名</text>
-			<input class="input" v-model="userInfo.nickname" type="text" maxlength="8" placeholder="请输入用户名"
+			<input class="input" v-model="name" type="text" maxlength="8" placeholder="请输入用户名"
 				placeholder-class="placeholder">
 		</view>
 		<view class="cell b-b">
 			<text class="tit fill">性别</text>
 			<view class="checkbox center" @click="changeGender(1)">
-				<text v-if="userInfo.gender == 1" class="mix-icon icon-xuanzhong"></text>
+				<text v-if="sex == 1" class="mix-icon icon-xuanzhong"></text>
 				<text v-else class="mix-icon icon-yk_yuanquan"></text>
 				<text>男</text>
 			</view>
-			<view class="checkbox center" @click="changeGender(2)">
-				<text v-if="userInfo.gender == 2" class="mix-icon icon-xuanzhong"></text>
+			<view class="checkbox center" @click="changeGender(0)">
+				<text v-if="sex == 0" class="mix-icon icon-xuanzhong"></text>
 				<text v-else class="mix-icon icon-yk_yuanquan"></text>
 				<text>女</text>
 			</view>
@@ -41,71 +33,59 @@
 		</view>
 		<view class="cell b-b">
 			<text class="tit fill">生日</text>
-			<picker mode="date" :value="date" :start="startDate" :end="endDate" @change="bindDateChange">
-				<view class="uni-input">{{date}}</view>
+			<picker mode="date" :value="birthday" @change="bindDateChange">
+				<view class="uni-input">{{birthday}}</view>
 			</picker>
 		</view>
-
-		<mix-button ref="confirmBtn" text="保存资料" marginTop="80rpx" @onConfirm="confirm"></mix-button>
+		<view class="mix-btn-content" @click="confirm">保存资料</view>
+		<!-- <mix-button ref="confirmBtn" text="保存资料" marginTop="80rpx" @onConfirm="confirm"></mix-button> -->
 	</view>
 </template>
 
 <script>
 	export default {
 		data() {
-			const currentDate = this.getDate({
-				format: true
-			})
 			return {
-				uploadProgress: 100, //头像上传进度
+				id: '',
 				tempAvatar: '',
-				userInfo: {},
-				date: currentDate,
-				cityStr: '请选择地区'
+				cityStr: '请选择地区',
+				icon: '',
+				name: '',
+				sex: '1',
+				address: '',
+				birthday: '请选择日期'
 			}
 		},
 		computed: {
 			curUserInfo() {
 				return this.$store.state.userInfo
-			},
-			startDate() {
-				return this.getDate('start');
-			},
-			endDate() {
-				return this.getDate('end');
-			}
-		},
-		watch: {
-			curUserInfo(curUserInfo) {
-				const {
-					avatar,
-					nickname,
-					gender,
-					anonymous
-				} = curUserInfo;
-				this.userInfo = {
-					avatar,
-					nickname,
-					gender,
-					anonymous: !!anonymous
-				};
 			}
 		},
 		onLoad() {
 			const {
-				avatar,
-				nickname,
-				gender,
-				anonymous
+				baseUser={}
 			} = this.curUserInfo;
-			this.userInfo = {
-				avatar,
-				nickname,
-				gender,
-				anonymous: !!anonymous
-			};
+			this.id = baseUser.id
+			this.icon = baseUser.icon
+			this.name = baseUser.name
+			this.sex = baseUser.sex
+			this.address = baseUser.address
+			this.cityStr = baseUser.address
+			this.birthday = this.formatDate(baseUser.birthday)
 		},
 		methods: {
+			doubleNum (num) {
+				return num < 10 ? '0' + num : num
+			},
+			formatDate (date) {
+				if (!date) return ''
+				let d = new Date(date)
+				return `${d.getFullYear()}-${this.doubleNum(d.getMonth() + 1)}-${this.doubleNum(d.getDate())}` 
+			},
+			bindDateChange (e) {
+				this.birthday = e.detail.value
+				console.log(e.detail.value)
+			},
 			getDate(type) {
 				const date = new Date();
 				let year = date.getFullYear();
@@ -121,57 +101,57 @@
 				day = day > 9 ? day : '0' + day;
 				return `${year}-${month}-${day}`;
 			},
-			bindDateChange() {},
 			onchange(e) {
 				const value = e.detail.value
 				this.cityStr = value.join(' ')
-				console.log('value', this.cityStr)
+				this.address = this.cityStr
 			},
 			//提交修改
 			async confirm() {
 				const {
-					uploadProgress,
-					userInfo,
-					curUserInfo
-				} = this;
-				let isUpdate = false;
-				for (let key in userInfo) {
-					if (userInfo[key] !== curUserInfo[key]) {
-						isUpdate = true;
-						break;
+					icon,
+					name,
+					sex,
+					address,
+					birthday
+				} = this
+				// if (!icon) {
+				// 	this.$util.msg('请上传头像');
+				// 	return;
+				// }
+				// if (!name) {
+				// 	this.$util.msg('请输入您的昵称');
+				// 	return;
+				// }
+				// if (!sex) {
+				// 	this.$util.msg('请选择您的性别');
+				// 	return;
+				// }
+				// if (!address) {
+				// 	this.$util.msg('请选择地区');
+				// 	return;
+				// }
+				// if (!birthday) {
+				// 	this.$util.msg('请选择出生日期');
+				// 	return;
+				// }
+				const res = await this.$http({
+					url: `/baseUser/v1.0/patchUpdate/${this.id}`,
+					method: 'post',
+					data: {
+						icon: icon,
+						name: name,
+						sex: sex,
+						address: address,
+						birthday: birthday
 					}
-				}
-				if (isUpdate === false) {
-					this.$util.msg('信息未修改');
-					this.$refs.confirmBtn.stop();
-					return;
-				}
-				if (!userInfo.avatar) {
-					this.$util.msg('请上传头像');
-					this.$refs.confirmBtn.stop();
-					return;
-				}
-				if (uploadProgress !== 100) {
-					this.$util.msg('请等待头像上传完毕');
-					this.$refs.confirmBtn.stop();
-					return;
-				}
-				if (!userInfo.nickname) {
-					this.$util.msg('请输入您的昵称');
-					this.$refs.confirmBtn.stop();
-					return;
-				}
-				if (!userInfo.gender) {
-					this.$util.msg('请选择您的性别');
-					this.$refs.confirmBtn.stop();
-					return;
-				}
-				const res = await this.$request('user', 'update', userInfo);
-				this.$refs.confirmBtn.stop();
-				this.$util.msg(res.msg);
-				if (res.status === 1) {
-					this.$store.dispatch('getUserInfo'); //刷新用户信息
+				},{msg: true})
+				
+				if (res.code === '0000') {
+					this.$util.msg('更新成功');
+					
 					setTimeout(() => {
+						this.$store.dispatch('getUserInfo'); //刷新用户信息
 						uni.navigateBack();
 					}, 1000)
 				}
@@ -181,7 +161,6 @@
 				uni.chooseImage({
 					count: 1,
 					success: res => {
-						console.log('res.tempFilePaths[0]', res.tempFilePaths[0])
 						uni.navigateTo({
 							url: `./cutImage/cut?src=${res.tempFilePaths[0]}`
 						});
@@ -191,42 +170,23 @@
 			//裁剪回调
 			async setAvatar(filePath) {
 				this.tempAvatar = filePath;
-				this.uploadProgress = 0;
-				const result = await uniCloud.uploadFile({
+				console.log('filePath', filePath)
+				const result = await uni.uploadFile({
+					url: 'http://47.98.126.64:8655/common/v1.0/upload',
 					filePath: filePath,
-					cloudPath: +new Date() + ('000000' + Math.floor(Math.random() * 999999)).slice(-6) +
-						'.jpg',
-					onUploadProgress: e => {
-						this.uploadProgress = Math.round(
-							(e.loaded * 100) / e.total
-						);
-					}
-				});
-				if (!result.fileID) {
-					this.$util.msg('头像上传失败');
-					return;
-				}
-				if (typeof uniCloud.getTempFileURL === 'undefined') {
-					this.userInfo.avatar = result.fileID;
+					name: 'file'
+				})
+				let data = JSON.parse(result[1].data)
+				if (data.code === '0000') {
+					this.icon = data.data
 				} else {
-					const tempFiles = await uniCloud.getTempFileURL({
-						fileList: [result.fileID]
-					})
-					const tempFile = tempFiles.fileList[0];
-					if (tempFile.download_url || tempFile.fileID) {
-						this.userInfo.avatar = tempFile.download_url || tempFile.fileID;
-					} else {
-						this.$util.msg('头像上传失败');
-					}
+					this.$util.msg('上传失败');
 				}
+				
 			},
 			//修改性别
 			changeGender(gender) {
-				this.$set(this.userInfo, 'gender', gender)
-			},
-			//公开信息
-			onSwitch(e) {
-				this.userInfo.anonymous = !e.detail.value;
+				this.sex = gender
 			}
 		}
 	}
@@ -236,7 +196,12 @@
 	.app {
 		padding-top: 16rpx;
 	}
-
+	.uni-input {
+		padding: 0;
+	}
+	.mix-btn-content {
+		margin-top: r(30);
+	}
 	.cell {
 		display: flex;
 		align-items: center;

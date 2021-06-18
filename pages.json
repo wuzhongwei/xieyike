@@ -170,6 +170,20 @@
 			}
 		},
 		{
+			"path": "pages/index/indexedList",
+			"style": {
+				"navigationBarTitleText": "品牌",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/index/testUser1",
+			"style": {
+				"navigationBarTitleText": "测评相关信息",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
 			"path": "pages/index/jiaoxing",
 			"style": {
 				"navigationBarTitleText": "脚型",
@@ -184,9 +198,30 @@
 			}
 		},
 		{
+			"path": "pages/index/waziInput",
+			"style": {
+				"navigationBarTitleText": "袜子",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/index/testchangdi",
+			"style": {
+				"navigationBarTitleText": "测试产地",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
 			"path": "pages/index/dafa",
 			"style": {
 				"navigationBarTitleText": "篮球打法",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/index/addDafa",
+			"style": {
+				"navigationBarTitleText": "添加篮球打法",
 				"enablePullDownRefresh": false
 			}
 		},
@@ -202,6 +237,194 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "个人主页",
+                "navigationStyle":"custom"
+            }
+            
+        },{
+            "path" : "pages/user/bijilie",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "笔记首页",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/user/bijiDetail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "笔记详情",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/user/ceateTest",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "新建笔记",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/write/write",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "写测评",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/notice/notice",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "消息",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/notice/pinlun",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "评论",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/notice/dianzan",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "点赞",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/notice/tuijian",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "推荐",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/notice/fensi",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "粉丝",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/notice/xitong",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "系统消息",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/public/article",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "隐私政策",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/public/article2",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "用户协议",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/index/jiaoganmohe",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "脚感磨合",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/index/waiguansheji",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "外观设计",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/index/zuogong",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "做工",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/index/baoguoxing",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "包裹性",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/index/zhichenxing",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/index/linghuaxing",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/index/touqixing",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/index/zhuadili",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "抓地力",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/index/naimoxing",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/index/huanzhenxing",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        },{
+            "path" : "pages/index/zongjie",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
                 "enablePullDownRefresh": false
             }
             
@@ -226,10 +449,16 @@
 				"selectedIconPath":"static/home_active.png"
 			},
 			{
+				"pagePath":"pages/notice/notice",
+				"text":"",
+				"iconPath":"static/bubble.png",
+				"selectedIconPath":"static/bubble_active.png"
+			},
+			{
 				"pagePath":"pages/set/userInfo",
 				"text":"",
-				"iconPath":"static/home.png",
-				"selectedIconPath":"static/home_active.png"
+				"iconPath":"static/user.png",
+				"selectedIconPath":"static/user_active.png"
 			}
 		]
 	}

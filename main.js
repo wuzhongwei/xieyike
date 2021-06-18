@@ -20,7 +20,7 @@ Vue.prototype.$util = {
 	date
 }
 Vue.prototype.$store = store
-require('./common/js/plugins.js')
+
 Vue.config.productionTip = false
 
 App.mpType = 'app'

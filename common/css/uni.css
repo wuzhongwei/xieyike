@@ -1419,6 +1419,12 @@ radio-group label, checkbox-group label{
 .uni-icon-scan:before {
     content: "\e612";
 }
+.uni-icon-zan:before {
+    content: "\e83d";
+}
+.uni-icon-xin:before {
+    content: "\e83e";
+}
 
 /* 分界线 */
 .uni-divider{

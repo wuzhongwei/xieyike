@@ -51,7 +51,6 @@
 		},
 		computed: {
 			navigationBarHeight(){
-				console.log(this.systemInfo.navigationBarHeight);
 				return this.systemInfo.navigationBarHeight;
 			}
 		},

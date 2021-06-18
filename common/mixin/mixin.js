@@ -1,4 +1,4 @@
-import {request} from '@/common/js/plugins'
+import {request, uploadFile} from '@/common/js/plugins'
 
 export default{
 	data(){
@@ -7,7 +7,7 @@ export default{
 			// pageNum: 6, //每页加载数据量
 			loadingType: 1, //0加载前 1加载中 2没有更多
 			isLoading: false, //刷新数据
-			loaded: false, //加载完毕
+			// loaded: false, //加载完毕
 		}
 	},
 	methods: {
@@ -41,6 +41,12 @@ export default{
 		 * @param {Boolean} ext.login 未登录拦截
 		 * @param {Boolean} ext.setLoaded 加载完成是设置页面加载完毕
 		 */
+		$uploadFile(options, ext={isShowLoading: true}){
+			if(ext.login && !this.$util.isLogin()){
+				return Promise.reject();
+			}
+			uploadFile(options, ext)
+		},
 		$http(options, ext={isShowLoading: true}){
 			if(ext.login && !this.$util.isLogin()){
 				return Promise.reject();
@@ -55,7 +61,7 @@ export default{
 		},
 		imageOnLoad(data, key){
 			setTimeout(()=>{
-				this.$set(data, 'loaded', true);
+				// this.$set(data, 'loaded', true);
 			}, 100)
 		},
 		showConfirm(key){
